@@ -2,6 +2,13 @@
 
 #include <gtest.h>
 
+TEST(TSet, ediniza_ravna_edinice)
+{
+	const int ediniza = 1;
+
+	EXPECT_EQ(1,ediniza);
+}
+
 TEST(TSet, can_get_max_power_set)
 {
   const int size = 5;
