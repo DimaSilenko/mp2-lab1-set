@@ -9,6 +9,7 @@
 
 #include <string>
 
+// ---------------------------------------------------------------------------
 TBitField::TBitField(int len)
 {
 	if (len < 0)
@@ -27,6 +28,7 @@ TBitField::TBitField(int len)
 	}
 }
 
+// ---------------------------------------------------------------------------
 TBitField::TBitField(const TBitField &bf) // конструктор копирования
 {
 	BitLen = bf.BitLen;
@@ -36,6 +38,7 @@ TBitField::TBitField(const TBitField &bf) // конструктор копиро
 		pMem[i] = bf.pMem[i];
 }
 
+// ---------------------------------------------------------------------------
 TBitField::~TBitField()
 {
 	delete[]pMem;
@@ -45,6 +48,7 @@ TBitField::~TBitField()
 	BitLen = 0;
 }
 
+// ---------------------------------------------------------------------------
 int TBitField::GetMemIndex(const int n) const // индекс Мем для бита n
 {
 	if ((n < 0) || (n >= BitLen))
@@ -55,6 +59,7 @@ int TBitField::GetMemIndex(const int n) const // индекс Мем для би
 	}
 }
 
+// ---------------------------------------------------------------------------
 UInt TBitField::GetMemMask(const int n) const // битовая маска для бита n
 {
 	if ((n < 0) || (n >= BitLen))
@@ -67,11 +72,13 @@ UInt TBitField::GetMemMask(const int n) const // битовая маска дл�
 
 // доступ к битам битового поля
 
+// ---------------------------------------------------------------------------
 int TBitField::GetLength(void) const // получить длину (к-во битов)
 {
 	return BitLen;
 }
 
+// ---------------------------------------------------------------------------
 void TBitField::SetBit(const int n) // установить бит
 {
 	if ((n < 0) || (n >= BitLen))
@@ -79,6 +86,7 @@ void TBitField::SetBit(const int n) // установить бит
 	pMem[GetMemIndex(n)] |= GetMemMask(n);
 }
 
+// ---------------------------------------------------------------------------
 void TBitField::ClrBit(const int n) // очистить бит
 {
 	if ((n < 0) || (n >= BitLen))
@@ -86,6 +94,7 @@ void TBitField::ClrBit(const int n) // очистить бит
 	pMem[GetMemIndex(n)] &= ~GetMemMask(n);
 }
 
+// ---------------------------------------------------------------------------
 int TBitField::GetBit(const int n) const // получить значение бита
 {
 	if ((n < 0) || (n >= BitLen))
@@ -95,6 +104,7 @@ int TBitField::GetBit(const int n) const // получить значение б
 
 // битовые операции
 
+// ---------------------------------------------------------------------------
 TBitField& TBitField::operator=(const TBitField &bf) // присваивание
 {
 	if (this != &bf)
@@ -109,6 +119,7 @@ TBitField& TBitField::operator=(const TBitField &bf) // присваивание
 	return *this;
 }
 
+// ---------------------------------------------------------------------------
 int TBitField::operator==(const TBitField &bf) const // сравнение
 {
 	int rez = 1;
@@ -129,6 +140,7 @@ int TBitField::operator==(const TBitField &bf) const // сравнение
 
 }
 
+// ---------------------------------------------------------------------------
 int TBitField::operator!=(const TBitField &bf) const // сравнение
 {
 	int rez = 1;
@@ -137,6 +149,7 @@ int TBitField::operator!=(const TBitField &bf) const // сравнение
 	return rez;
 }
 
+// ---------------------------------------------------------------------------
 TBitField TBitField::operator|(const TBitField &bf) // операция "или"
 {
 	int i, len = BitLen;
@@ -150,6 +163,7 @@ TBitField TBitField::operator|(const TBitField &bf) // операция "или"
 	return temp;
 }
 
+// ---------------------------------------------------------------------------
 TBitField TBitField::operator&(const TBitField &bf) // операция "и"
 {
 	int i, len = BitLen;
@@ -163,6 +177,7 @@ TBitField TBitField::operator&(const TBitField &bf) // операция "и"
 	return temp;
 }
 
+// ---------------------------------------------------------------------------
 TBitField TBitField::operator~(void) // отрицание
 {
 	TBitField temp = *this;
@@ -178,6 +193,7 @@ TBitField TBitField::operator~(void) // отрицание
 
 // ввод/вывод
 
+// ---------------------------------------------------------------------------
 istream &operator>>(istream &istr, TBitField &bf) // ввод
 {
 	string temp;
@@ -200,6 +216,7 @@ istream &operator>>(istream &istr, TBitField &bf) // ввод
 	}
 }
 
+// ---------------------------------------------------------------------------
 ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 {
 	for (int i = 0; i < bf.BitLen; i++)

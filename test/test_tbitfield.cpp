@@ -299,7 +299,7 @@ TEST(TBitField, can_invert_many_random_bits_bitfield)
 // ---------------------------------------------------------------------------
 TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 {
-  const int size = 4;
+  const int size = 5;
   TBitField bf1(size), bf2(size);
 
   bf1.SetBit(1);
@@ -313,7 +313,7 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 // ---------------------------------------------------------------------------
 TEST(TBitField, true_equivalence_bitfields)
 {
-	const int size = 4;
+	const int size = 5;
 	TBitField firstBf(size), secondBf(size);
 
 	firstBf.SetBit(0);
@@ -324,7 +324,7 @@ TEST(TBitField, true_equivalence_bitfields)
 // ---------------------------------------------------------------------------
 TEST(TBitField, false_equivalence_bitfields)
 {
-	const int size = 4;
+	const int size = 5;
 	TBitField firstBf(size), secondBf(size);
 
 	firstBf.SetBit(0);
@@ -335,7 +335,7 @@ TEST(TBitField, false_equivalence_bitfields)
 // ---------------------------------------------------------------------------
 TEST(TBitField, true_anti_equivalence_bitfields)
 {
-	const int size = 4;
+	const int size = 5;
 	TBitField firstBf(size), secondBf(size);
 
 	firstBf.SetBit(0);
@@ -346,7 +346,7 @@ TEST(TBitField, true_anti_equivalence_bitfields)
 // ---------------------------------------------------------------------------
 TEST(TBitField, false_anti_equivalence_bitfields)
 {
-	const int size = 4;
+	const int size = 5;
 	TBitField firstBf(size), secondBf(size);
 
 	firstBf.SetBit(0);
