@@ -224,10 +224,54 @@ TEST(TBitField, and_operator_applied_to_bitfields_of_non_equal_size)
   EXPECT_EQ(expBf, bf1 & bf2);
 }
 // ---------------------------------------------------------------------------
+TEST(TBitField, true_equivalence_bitfields)
+{
+  const int size = 5;
+  TBitField firstBf(size), secondBf(size);
+
+  firstBf.SetBit(0);
+  secondBf.SetBit(0);
+
+  EXPECT_EQ(secondBf == firstBf, true);
+}
+// ---------------------------------------------------------------------------
+TEST(TBitField, false_equivalence_bitfields)
+{
+  const int size = 5;
+  TBitField firstBf(size), secondBf(size);
+
+  firstBf.SetBit(0);
+  secondBf.SetBit(3);
+
+  EXPECT_EQ(secondBf == firstBf, false);
+}
+// ---------------------------------------------------------------------------
+TEST(TBitField, true_anti_equivalence_bitfields)
+{
+  const int size = 5;
+  TBitField firstBf(size), secondBf(size);
+
+  firstBf.SetBit(0);
+  secondBf.SetBit(0);
+
+  EXPECT_EQ(secondBf != firstBf, false);
+}
+// ---------------------------------------------------------------------------
+TEST(TBitField, false_anti_equivalence_bitfields)
+{
+  const int size = 5;
+  TBitField firstBf(size), secondBf(size);
+
+  firstBf.SetBit(0);
+  secondBf.SetBit(3);
+
+  EXPECT_EQ(secondBf != firstBf, true);
+}
+// ---------------------------------------------------------------------------
 TEST(TBitField, can_invert_bitfield)
 {
   const int size = 2;
-  TBitField bf(size), negBf(size), expNegBf(size);
+  TBitField bf(size), negBf(size), expNegBf(size); 
   // bf = 01
   bf.SetBit(1);
   negBf = ~bf;
@@ -309,48 +353,4 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
   bf2.SetBit(2);
 
   EXPECT_NE(bf1, bf2);
-}
-// ---------------------------------------------------------------------------
-TEST(TBitField, true_equivalence_bitfields)
-{
-	const int size = 5;
-	TBitField firstBf(size), secondBf(size);
-
-	firstBf.SetBit(0);
-	secondBf.SetBit(0);
-
-	EXPECT_EQ(secondBf == firstBf, true);
-}
-// ---------------------------------------------------------------------------
-TEST(TBitField, false_equivalence_bitfields)
-{
-	const int size = 5;
-	TBitField firstBf(size), secondBf(size);
-
-	firstBf.SetBit(0);
-	secondBf.SetBit(3);
-
-	EXPECT_EQ(secondBf == firstBf, false);
-}
-// ---------------------------------------------------------------------------
-TEST(TBitField, true_anti_equivalence_bitfields)
-{
-	const int size = 5;
-	TBitField firstBf(size), secondBf(size);
-
-	firstBf.SetBit(0);
-	secondBf.SetBit(0);
-
-	EXPECT_EQ(secondBf != firstBf, false);
-}
-// ---------------------------------------------------------------------------
-TEST(TBitField, false_anti_equivalence_bitfields)
-{
-	const int size = 5;
-	TBitField firstBf(size), secondBf(size);
-
-	firstBf.SetBit(0);
-	secondBf.SetBit(3);
-
-	EXPECT_EQ(secondBf != firstBf, true);
 }
