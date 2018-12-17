@@ -222,6 +222,74 @@ TEST(TSet, check_size_changes_of_the_combination_of_two_sets_of_non_equal_size)
   EXPECT_EQ(size2, set3.GetMaxPower());
 }
 // ---------------------------------------------------------------------------
+TEST(TSet, true_equivalence_set)
+{
+  const int size = 6;
+  TSet set1(size), set2(size);
+
+  set1.InsElem(1);
+  set1.InsElem(2);
+  set1.InsElem(4);
+  set1.InsElem(5);
+
+  set2.InsElem(1);
+  set2.InsElem(2);
+  set2.InsElem(4);
+  set2.InsElem(5);
+
+  EXPECT_EQ(set1 == set2, true);
+}
+// ---------------------------------------------------------------------------
+TEST(TSet, false_equivalence_set)
+{
+  const int size = 6;
+  TSet set1(size), set2(size);
+
+  set1.InsElem(1);
+  set1.InsElem(2);
+  set1.InsElem(4);
+
+  set2.InsElem(1);
+  set2.InsElem(2);
+  set2.InsElem(3);
+
+  EXPECT_EQ(set1 == set2, false);
+}
+// ---------------------------------------------------------------------------
+TEST(TSet, true_anti_equivalence_set)
+{
+  const int size = 6;
+  TSet set1(size), set2(size);
+
+  set1.InsElem(1);
+  set1.InsElem(2);
+  set1.InsElem(4);
+
+  set2.InsElem(1);
+  set2.InsElem(2);
+  set2.InsElem(3);
+
+  EXPECT_EQ(set1 != set2, true);
+}
+// ---------------------------------------------------------------------------
+TEST(TSet, false_anti_equivalence_set)
+{
+  const int size = 6;
+  TSet set1(size), set2(size);
+
+  set1.InsElem(1);
+  set1.InsElem(2);
+  set1.InsElem(4);
+  set1.InsElem(5);
+
+  set2.InsElem(1);
+  set2.InsElem(2);
+  set2.InsElem(4);
+  set2.InsElem(5);
+ 
+  EXPECT_EQ(set1 != set2, false);
+}
+// ---------------------------------------------------------------------------
 TEST(TSet, can_combine_two_sets_of_non_equal_size)
 {
   const int size1 = 5, size2 = 7;
@@ -302,72 +370,4 @@ TEST(TSet, check_negation_operator)
   expSet.InsElem(2);
 
   EXPECT_EQ(expSet, set1);
-}
-// ---------------------------------------------------------------------------
-TEST(TSet, true_equivalence_set)
-{
-	const int size = 6;
-	TSet set1(size), set2(size);
-
-	set1.InsElem(1);
-	set1.InsElem(2);
-	set1.InsElem(4);
-	set1.InsElem(5);
-
-	set2.InsElem(1);
-	set2.InsElem(2);
-	set2.InsElem(4);
-	set2.InsElem(5);
-
-	EXPECT_EQ(set1 == set2, true);
-}
-// ---------------------------------------------------------------------------
-TEST(TSet, false_equivalence_set)
-{
-	const int size = 6;
-	TSet set1(size), set2(size);
-
-	set1.InsElem(1);
-	set1.InsElem(2);
-	set1.InsElem(4);
-
-	set2.InsElem(1);
-	set2.InsElem(2);
-	set2.InsElem(3);
-
-	EXPECT_EQ(set1 == set2, false);
-}
-// ---------------------------------------------------------------------------
-TEST(TSet, true_anti_equivalence_set)
-{
-	const int size = 6;
-	TSet set1(size), set2(size);
-
-	set1.InsElem(1);
-	set1.InsElem(2);
-	set1.InsElem(4);
-
-	set2.InsElem(1);
-	set2.InsElem(2);
-	set2.InsElem(3);
-
-	EXPECT_EQ(set1 != set2, true);
-}
-// ---------------------------------------------------------------------------
-TEST(TSet, false_anti_equivalence_set)
-{
-	const int size = 6;
-	TSet set1(size), set2(size);
-
-	set1.InsElem(1);
-	set1.InsElem(2);
-	set1.InsElem(4);
-	set1.InsElem(5);
-
-	set2.InsElem(1);
-	set2.InsElem(2);
-	set2.InsElem(4);
-	set2.InsElem(5);
-
-	EXPECT_EQ(set1 != set2, false);
 }
