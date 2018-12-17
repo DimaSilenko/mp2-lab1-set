@@ -1,7 +1,6 @@
 ﻿#include <iomanip>
 
- //#define USE_SET // Использовать класс TSet,
-                // закоментировать, чтобы использовать битовое поле
+// #define USE_SET // Использовать класс TSet, коммент = использовать битовое поле
 
 #ifndef USE_SET // Использовать класс TBitField
 
@@ -11,26 +10,27 @@
 
 int main()
 {
-	int upBound, m, k, count, nElem;
+	int upGran, m, k, count, nElem;
 
 	setlocale(LC_ALL, "Russian");
+
 	cout << "Тестирование программ поддержки битового поля" << endl;
 	cout << "             Решето Эратосфена" << endl;
 	cout << "Введите верхнюю границу целых значений - ";
-	cin >> upBound;
-	TBitField s(upBound + 1); // заполнение множества
-	for (m = 2; m <= upBound; m++)
+	cin >> upGran;
+	TBitField s(upGran + 1); // заполнение множества
+	for (m = 2; m <= upGran; m++)
 		s.SetBit(m); // проверка до sqrt(n) и удаление кратных
-	for (m = 2; m * m <= upBound; m++) // если m в s, удаление кратных
+	for (m = 2; m * m <= upGran; m++) // если m в s, удаление кратных
 		if (s.GetBit(m))
-			for (k = 2 * m; k <= upBound; k += m)
+			for (k = 2 * m; k <= upGran; k += m)
 				if (s.GetBit(k))
 					s.ClrBit(k); // оставшиеся в s элементы - простые числа
 	cout << endl << "Печать множества некратных чисел" << endl << s << endl;
 	cout << endl << "Печать простых чисел" << endl;
 	count = 0;
 	k = 1;
-	for (m = 2; m <= upBound; m++)
+	for (m = 2; m <= upGran; m++)
 		if (s.GetBit(m))
 		{
 			count++;
@@ -39,7 +39,7 @@ int main()
 				cout << endl;
 		}
 	cout << endl;
-	cout << "В первых " << upBound << " числах " << count << " простых" << endl;
+	cout << "В первых " << upGran << " числах " << count << " простых" << endl;
 
 	cout << "\n\n\tВвод битовой строки\n";
 	cout << "Введите размер битовой строки\n";
@@ -60,26 +60,26 @@ int main()
 
 int main()
 {
-	int upBound, m, k, count, nElem;
+	int upGran, m, k, count, nElem;
 
 	setlocale(LC_ALL, "Russian");
 	cout << "Тестирование программ поддержки множества" << endl;
 	cout << "              Решето Эратосфена" << endl;
 	cout << "Введите верхнюю границу целых значений - ";
-	cin >> upBound;
-	TSet s(upBound + 1); // заполнение множества
-	for (m = 2; m <= upBound; m++)
+	cin >> upGran;
+	TSet s(upGran + 1); // заполнение множества
+	for (m = 2; m <= upGran; m++)
 		s.InsElem(m); // проверка до sqrt(n) и удаление кратных
-	for (m = 2; m * m <= upBound; m++) // если м в s, удаление кратных
+	for (m = 2; m * m <= upGran; m++) // если м в s, удаление кратных
 		if (s.IsMember(m))
-			for (k = 2 * m; k <= upBound; k += m)
+			for (k = 2 * m; k <= upGran; k += m)
 				if (s.IsMember(k))
 					s.DelElem(k); // оставшиеся в s элементы - простые числа
 	cout << endl << "Печать множества некратных чисел" << endl << s << endl;
 	cout << endl << "Печать простых чисел" << endl;
 	count = 0;
 	k = 1;
-	for (m = 2; m <= upBound; m++)
+	for (m = 2; m <= upGran; m++)
 		if (s.IsMember(m))
 		{
 			count++;
@@ -88,7 +88,7 @@ int main()
 				cout << endl;
 }
 	cout << endl;
-	cout << "В первых " << upBound << " числах " << count << " простых" << endl;
+	cout << "В первых " << upGran << " числах " << count << " простых" << endl;
 
 	cout << "\n\n\tВвод множества целых чисел\n";
 	cout << "Введите наибольший элемент множества\n";
