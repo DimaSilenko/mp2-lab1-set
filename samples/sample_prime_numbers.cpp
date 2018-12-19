@@ -1,6 +1,6 @@
 ﻿#include <iomanip>
 
-// #define USE_SET // Использовать класс TSet, коммент = использовать битовое поле
+ #define USE_SET // Использовать класс TSet, коммент = использовать битовое поле
 
 #ifndef USE_SET // Использовать класс TBitField
 
@@ -50,7 +50,7 @@ int main()
 	cout << "\nВаша битовая строка\n";
 	cout << bit;
 	cout << "\n\nМножество чисел битовой строки\n";
-	for (m = 0; m <= nElem; m++)
+	for (m = 0; m < nElem; m++)
 		if (bit.GetBit(m))
 			cout << setw(3) << m << " ";
 }
